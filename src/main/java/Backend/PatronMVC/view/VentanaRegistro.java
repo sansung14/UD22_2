@@ -19,8 +19,8 @@ public class VentanaRegistro extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private PersonaController personaController; //objeto personaController que permite la relacion entre esta clase y la clase PersonaController
 	private JLabel labelTitulo;
-	private JTextField textCod,textNombre,textApellido, textDireccion, textDni, textFecha;
-	private JLabel cod,nombre,apellido,direccion,dni,fecha;
+	private JTextField textCod,textNombre,textApellido, textDireccion, textDni;
+	private JLabel cod,nombre,apellido,direccion,dni;
 	private JButton botonGuardar,botonCancelar;
 	
 	/**
@@ -67,11 +67,6 @@ public class VentanaRegistro extends JFrame implements ActionListener{
 		direccion.setBounds(20, 150, 80, 25);
 		add(direccion);
 		
-		fecha=new JLabel();
-		fecha.setText("Fecha");
-		fecha.setBounds(20, 180, 80, 25);
-		add(fecha);
-		
 		textCod=new JTextField();
 		textCod.setBounds(80, 70, 80, 25);
 		add(textCod);
@@ -92,9 +87,6 @@ public class VentanaRegistro extends JFrame implements ActionListener{
 		textDireccion.setBounds(80, 150, 190, 25);
 		add(textDireccion);
 		
-		textFecha=new JTextField();
-		textFecha.setBounds(80, 180, 190, 25);
-		add(textFecha);
 		
 		botonGuardar.addActionListener(this);
 		botonCancelar.addActionListener(this);
@@ -120,7 +112,6 @@ public class VentanaRegistro extends JFrame implements ActionListener{
 		textApellido.setText("");
 		textDireccion.setText("");
 		textDni.setText("");
-		textFecha.setText("");
 
 	}
 
@@ -142,8 +133,6 @@ public class VentanaRegistro extends JFrame implements ActionListener{
 				miPersona.setApellidoPersona(textApellido.getText());
 				miPersona.setDireccionPersona(textDireccion.getText());
 				miPersona.setDniPersona(Integer.parseInt(textDni.getText()));
-				miPersona.setFechaPersona(textFecha.getText());
-
 				personaController.registrarPersona(miPersona);	
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(null,"Error en el Ingreso de Datos","Error",JOptionPane.ERROR_MESSAGE);

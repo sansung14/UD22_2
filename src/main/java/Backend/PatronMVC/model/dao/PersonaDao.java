@@ -4,6 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import Backend.PatronMVC.model.conexion.Conexion;
@@ -25,7 +29,7 @@ public class PersonaDao
 			Statement st = conex.getConnection().createStatement();
 			String sql= "INSERT INTO cliente VALUES ('"+miPersona.getIdPersona()+"', '"
 					+miPersona.getNombrePersona()+"', '"+miPersona.getApellidoPersona()+"', '"
-					+miPersona.getDireccionPersona()+"', '"+miPersona.getDniPersona()+"', '"+miPersona.getFechaPersona()+"');";
+					+miPersona.getDireccionPersona()+"', '"+miPersona.getDniPersona()+"', '"+fecha()+"');";
 			st.executeUpdate(sql);
 			JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
@@ -117,6 +121,13 @@ public class PersonaDao
             System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, "No se Elimino");
 		}
+	}
+	
+	// METODO  FECHA
+	public static String fecha() {
+		Date date = new Date();
+		DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return hourdateFormat.format(date);
 	}
 
 }
